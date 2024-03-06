@@ -37,9 +37,7 @@ class PenggunaController extends Controller
                 ->paginate(10);
         }
 
-        $maintenances = DB::table('maintenance')
-            ->orderBy('created_at', 'DESC')
-            ->get();
+
 
         return view('account.pengguna.index', compact('users', 'maintenances'));
     }
@@ -71,9 +69,7 @@ class PenggunaController extends Controller
             return redirect()->route('account.pengguna.index')->with('error', 'Data Pengguna tidak ditemukan.');
         }
 
-        $maintenances = DB::table('maintenance')
-            ->orderBy('created_at', 'DESC')
-            ->get();
+
 
 
         return view('account.pengguna.index', compact('users', 'maintenances'));
@@ -281,9 +277,7 @@ class PenggunaController extends Controller
     {
         $user = User::findOrFail($id);
 
-        $maintenances = DB::table('maintenance')
-            ->orderBy('created_at', 'DESC')
-            ->get();
+
 
         return view('account.profil.resetpassword', compact('user', 'maintenances'));
     }
@@ -292,9 +286,7 @@ class PenggunaController extends Controller
     {
         $user = User::findOrFail($id);
 
-        $maintenances = DB::table('maintenance')
-            ->orderBy('created_at', 'DESC')
-            ->get();
+
 
         return view('account.company.index', compact('user', 'maintenances'));
     }
