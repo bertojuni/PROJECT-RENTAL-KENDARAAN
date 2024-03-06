@@ -13,50 +13,37 @@ List Notif Sewa | MANAGEMENT
 
         <div class="section-body">
 
-            <!--================== jika maintenace aktif ==================-->
-            @if (!$maintenances->isEmpty())
-            @foreach($maintenances as $maintenance)
-            @if ($maintenance->status === 'aktif' || ($maintenance->end_date !== null && now() <= Carbon\Carbon::parse($maintenance->end_date)->endOfDay()))
-                <div class="alert alert-danger" role="alert" style="text-align: center;">
-                    <b style="font-size: 25px; text-transform:uppercase">INFORMASI!</b><br>
-                    <!-- <img style="width: 100px; height:100px;" src="{{ asset('images/' . $maintenance->gambar) }}" alt="Gambar Presensi" class="img-thumbnail"> -->
-                    <p style="font-size: 20px;" class="mt-2">{{ $maintenance->note }}</p>
-                    <p style="font-size: 15px;">Dari Tanggal {{ \Carbon\Carbon::parse($maintenance->start_date)->isoFormat('D MMMM YYYY HH:mm') }} - {{ \Carbon\Carbon::parse($maintenance->end_date)->isoFormat('D MMMM YYYY HH:mm') }}</p>
+
+
+            <div class="card">
+                <div class="card-header">
+                    <h4><i class="fas fa-list"></i> NOTIFIKASI SEWA</h4>
                 </div>
-                @endif
-                @endforeach
-                @endif
-                <!--================== end ==================-->
 
-                <div class="card">
-                    <div class="card-header">
-                        <h4><i class="fas fa-list"></i> NOTIFIKASI SEWA</h4>
-                    </div>
-
-                    <div class="card-body">
-                        <form action="{{ route('account.pengguna.search') }}" method="GET">
-                            <div class="form-group">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <a href="{{ route('account.sewa.create') }}" class="btn btn-primary" style="padding-top: 10px;">
-                                            <i class="fa fa-plus-circle"></i> TAMBAH
-                                        </a>
-                                    </div>
-                                    <input type="text" class="form-control" name="q" placeholder="PENCARIAN" value="{{ app('request')->input('q') }}">
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> CARI
-                                        </button>
-                                    </div>
-                                    @if(request()->has('q'))
-                                    <a href="{{ route('account.pengguna.index') }}" class="btn btn-danger ml-1">
-                                        <i class="fa fa-times-circle mt-2"></i> HAPUS PENCARIAN
+                <div class="card-body">
+                    <form action="{{ route('account.pengguna.search') }}" method="GET">
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <a href="{{ route('account.sewa.create') }}" class="btn btn-primary" style="padding-top: 10px;">
+                                        <i class="fa fa-plus-circle"></i> TAMBAH
                                     </a>
-                                    @endif
                                 </div>
+                                <input type="text" class="form-control" name="q" placeholder="PENCARIAN" value="{{ app('request')->input('q') }}">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> CARI
+                                    </button>
+                                </div>
+                                @if(request()->has('q'))
+                                <a href="{{ route('account.pengguna.index') }}" class="btn btn-danger ml-1">
+                                    <i class="fa fa-times-circle mt-2"></i> HAPUS PENCARIAN
+                                </a>
+                                @endif
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
+            </div>
         </div>
 
         <div class="card">

@@ -28,11 +28,9 @@ class SewaController extends Controller
             ->orderBy('created_at', 'DESC')
             ->paginate(10);
 
-        $maintenances = DB::table('maintenance')
-            ->orderBy('created_at', 'DESC')
-            ->get();
 
-        return view('account.sewa.index', compact('users', 'maintenances'));
+
+        return view('account.sewa.index', compact('users'));
     }
 
 
@@ -61,12 +59,9 @@ class SewaController extends Controller
             return redirect()->route('account.pengguna.index')->with('error', 'Data Pengguna tidak ditemukan.');
         }
 
-        $maintenances = DB::table('maintenance')
-            ->orderBy('created_at', 'DESC')
-            ->get();
 
 
-        return view('account.sewa.index', compact('users', 'maintenances'));
+        return view('account.sewa.index', compact('users'));
     }
 
     public function create()

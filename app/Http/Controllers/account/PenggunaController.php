@@ -39,7 +39,7 @@ class PenggunaController extends Controller
 
 
 
-        return view('account.pengguna.index', compact('users', 'maintenances'));
+        return view('account.pengguna.index', compact('users'));
     }
 
     public function search(Request $request)
@@ -72,7 +72,7 @@ class PenggunaController extends Controller
 
 
 
-        return view('account.pengguna.index', compact('users', 'maintenances'));
+        return view('account.pengguna.index', compact('users'));
     }
 
     public function create()
@@ -279,7 +279,7 @@ class PenggunaController extends Controller
 
 
 
-        return view('account.profil.resetpassword', compact('user', 'maintenances'));
+        return view('account.profil.resetpassword', compact('user'));
     }
 
     public function company($id)
@@ -288,7 +288,7 @@ class PenggunaController extends Controller
 
 
 
-        return view('account.company.index', compact('user', 'maintenances'));
+        return view('account.company.index', compact('user'));
     }
     public function updateCompany(Request $request, $id)
     {

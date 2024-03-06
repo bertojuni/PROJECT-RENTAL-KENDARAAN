@@ -31,16 +31,14 @@ class ProfilController extends Controller
       return redirect()->route('account.profil.index')->with('error', 'User not found.');
     }
 
-    $maintenances = DB::table('maintenance')
-      ->orderBy('created_at', 'DESC')
-      ->get();
+
 
     // Jika user adalah 'manager' dan pengguna memiliki perusahaan yang sama, atau jika user bukan 'manager' dan ID pengguna sesuai dengan ID user saat ini
     if (
       Auth::check() && Auth::user()->level == 'manager' && Auth::user()->company == $user->company ||
       Auth::check() && Auth::user()->id == $user->id
     ) {
-      return view('account.profil.index', compact('user', 'maintenances'));
+      return view('account.profil.index', compact('user'));
     } else {
       return redirect()->route('account.profil.index')->with('error', 'Access denied.');
     }
